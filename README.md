@@ -1,8 +1,8 @@
 # LitMonitor with Claude Code
 
-Stay current with academic literature using Claude Code as your AI-powered reviewer. **Requires a Claude Code subscription** — but if you already have one, paper scoring is included at no additional cost.
+Stay current with academic literature — Claude Code reads recent papers and scores each one for relevance to your research.
 
-LitMonitor with Claude Code fetches recent papers from academic journals and arXiv, then uses your active Claude Code session to score each paper 1–10 based on your research interests. Scoring happens *inside* Claude Code, so there are no separate API calls and no extra charges beyond your existing Claude subscription.
+**Requires a Claude Code subscription (Pro plan or Team plan).** Paper scoring runs inside your active Claude Code session, so there are no separate API calls and no extra charges on top of your existing subscription.
 
 > Inspired by [LitMonitor Earth](https://github.com/eabarnes1010/litmonitor) by Elizabeth A. Barnes (CC BY 4.0).
 
@@ -10,152 +10,94 @@ LitMonitor with Claude Code fetches recent papers from academic journals and arX
 
 ## How it works
 
-1. **Python fetches papers** (free APIs: OpenAlex, arXiv, Semantic Scholar)
-2. **Claude Code scores them** in-session using your research profile
-3. **Results appear as a ranked markdown table** in the chat
+1. A Python script fetches recent papers from journals and arXiv (free APIs — OpenAlex, Semantic Scholar)
+2. Claude Code reads the papers and scores each one 1–10 based on your research profile
+3. Results appear as a ranked table in the chat window
 
-Score caching means papers you've already seen aren't re-scored on future runs.
-
----
-
-## Quickstart
-
-### Requirements
-- [Claude Code](https://claude.ai/code) with any subscription (Team plan works for shared use)
-- Python 3.8+ (standard library only — no pip install needed)
-
-### Setup
-
-```bash
-git clone https://github.com/YOUR_USERNAME/litmonitor-claude-code.git
-cd litmonitor-claude-code
-```
-
-Open the folder in Claude Code, then type:
-
-```
-setup
-```
-
-Claude will ask you a series of questions about your research interests and write `profile.yaml` for you.
-
-Alternatively, copy a template and edit manually:
-```bash
-cp profiles/atmospheric_science.yaml profile.yaml
-# edit profile.yaml with your details
-```
-
-### Fetch and score papers
-
-In Claude Code, type:
-```
-fetch and score papers
-```
-
-Claude runs the fetch script, scores the new papers in-session, and displays a ranked table.
+Papers you've already seen are cached, so only new ones are scored on each run.
 
 ---
 
-## Workflow details
+## For Humans
 
-```
-fetch_papers.py           # pulls from OpenAlex + arXiv, fills abstracts via Semantic Scholar
-       ↓
-papers_raw.json           # all papers; cached ones already have scores
-       ↓
-Claude scores in-session  # reads profile.yaml, assigns 1–10 + one-line reason
-       ↓
-papers_scored.json        # complete scored list
-       ↓
-update_cache.py           # persists new scores to score_cache.json
-       ↓
-show_results.py           # renders markdown table sorted by score
-```
+This tool is designed to be used through Claude Code in plain English — you don't run any commands yourself. Claude Code handles everything behind the scenes.
 
-### Script flags
+### Getting started
 
-```bash
-python fetch_papers.py --days 30     # fetch last 30 days instead of profile default
-python fetch_papers.py --force       # ignore cache, re-score everything
-python fetch_papers.py --no-enrich   # skip Semantic Scholar abstract enrichment
+Open Claude Code in your working directory, then say:
 
-python show_results.py --min-score 7 # show only score ≥ 7
-python show_results.py --json        # output raw JSON
-```
+> "Clone https://github.com/Chi-JuiChen/litmonitor-claude-code and set it up in a subfolder called `litmonitor`"
 
----
+Claude will clone the repository, open the project, read the setup instructions, and guide you through a short configuration interview — asking about your research field, topics, journals, and authors. At the end it writes your personal `profile.yaml`.
 
-## Research profile
+### Fetching and scoring papers
 
-`profile.yaml` (gitignored — yours alone) controls scoring:
+Once set up, say:
 
-| Section | Effect |
+> "Fetch and score my papers"
+
+Claude fetches recent papers, scores them in-session, and displays a ranked list. That's the whole workflow.
+
+### Other things you can say
+
+| Say this to Claude Code | What happens |
 |---|---|
-| `prioritize` | Topics that score 8–10 |
-| `transferable_methods` | Methods from other fields — also score 8–10 |
-| `downgrade` | Topics to suppress — score 1–4 |
-| `priority_authors` | Specific researchers — always score 8–10 |
-| `journals` | OpenAlex source IDs or ISSNs to monitor |
-| `arxiv_categories` | arXiv categories to monitor |
+| "Setup" | Re-runs the profile configuration wizard |
+| "Show papers scoring 7 or above" | Filters the results by score |
+| "Fetch the last 30 days" | Extends the fetch window |
+| "Update my profile" | Claude walks you through editing your research interests |
+| "Add journal [name]" | Claude looks up the journal ID and adds it to your profile |
+| "Re-score [paper title]" | Removes the cached score and re-evaluates that paper |
+
+### Team use
+
+Each team member opens their own Claude Code session, navigates to their working directory, and says the same clone command. Because `profile.yaml` is personal and never committed, everyone gets their own research profile from the same shared codebase.
 
 ---
 
-## Profile templates
+## For Claude Code
 
-Pre-built templates in `profiles/` for common research areas. Copy one to `profile.yaml` to get started:
+> This section is a technical reference for Claude Code, not for human readers.
 
-```bash
-cp profiles/atmospheric_science.yaml profile.yaml
-cp profiles/oceanography.yaml profile.yaml
-cp profiles/earth_system.yaml profile.yaml
-cp profiles/ml_climate.yaml profile.yaml
+The complete setup wizard, 7-step fetch-and-score workflow, and scoring rules are in [`CLAUDE.md`](CLAUDE.md). Read it before acting on any user request.
+
+### File reference
+
+| File | Purpose |
+|---|---|
+| `CLAUDE.md` | Full workflow and scoring instructions for Claude Code |
+| `fetch_papers.py` | Fetches papers from OpenAlex + arXiv; enriches abstracts via Semantic Scholar; writes `papers_raw.json` |
+| `update_cache.py` | Reads `papers_scored.json` → persists new scores to `score_cache.json` |
+| `show_results.py` | Renders `papers_scored.json` as a markdown table sorted by score |
+| `profile.yaml` | Per-user research profile (gitignored; created by setup wizard) |
+| `profile.template.yaml` | Blank starter template |
+| `profiles/` | Field-specific templates: `atmospheric_science`, `oceanography`, `earth_system`, `ml_climate` |
+| `papers_raw.json` | Auto-generated; `cached=false` entries need scoring |
+| `papers_scored.json` | Auto-generated; all entries have scores filled in |
+| `score_cache.json` | Cumulative score history; prevents re-scoring seen papers |
+
+### Workflow summary
+
+```
+python fetch_papers.py    →  papers_raw.json  (cached=false entries need scoring)
+Claude reads + scores     →  papers_scored.json
+python update_cache.py    →  score_cache.json  (persists new scores)
+python show_results.py    →  markdown table in chat
 ```
 
----
+### Adding a new data source
 
-## Team / shared use
-
-Each team member:
-1. Clones the repo
-2. Runs setup (`profile.yaml` is gitignored, so each person has their own)
-3. Gets a personalized feed from the same journal list
-
-To share a common journal list across the team, commit a team template to `profiles/` and have everyone copy it.
+Add `fetch_<source>(...)` to `fetch_papers.py` returning paper dicts with fields:
+`paper_id`, `title`, `authors`, `abstract`, `journal`, `date`, `url`, `source`.
+Call it from `main()` and accumulate into `all_papers`. See `CLAUDE.md` for the full schema.
 
 ---
 
 ## Abstract coverage for paywalled journals
 
 - **OpenAlex** returns abstracts for most open-access papers
-- **Semantic Scholar** (called automatically) fills gaps for paywalled publishers like AMS, Nature, and AAAS via separate licensing agreements
+- **Semantic Scholar** fills gaps for paywalled publishers (AMS, Nature, AAAS) via separate licensing agreements — called automatically, no account needed
 - Papers with no recoverable abstract are scored on title alone
-
----
-
-## Extending
-
-### Add a journal
-Append to `journals:` in `profile.yaml` — no code change needed:
-```yaml
-  - "My New Journal | S<OpenAlex-ID>"
-```
-Find the ID at: `https://api.openalex.org/sources?search=journal+name`
-
-### Add a data source
-See the "Adding a new data source" section in `CLAUDE.md`.
-
-### Add a profile template
-Create `profiles/<field>.yaml`, update `profiles/README.md`, and submit a pull request.
-
----
-
-## Cost
-
-| Component | Cost |
-|---|---|
-| Paper fetching (OpenAlex, arXiv, Semantic Scholar) | Free |
-| Scoring by Claude Code | Included in your Claude Code subscription |
-| Separate Anthropic API key | Not needed |
 
 ---
 
@@ -164,10 +106,10 @@ Create `profiles/<field>.yaml`, update `profiles/README.md`, and submit a pull r
 This project is a reimplementation and extension of **[LitMonitor Earth](https://github.com/eabarnes1010/litmonitor)** by **Elizabeth A. Barnes**, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
 Key differences from the original:
-- Reimplemented in Python (the original is a standalone HTML/JS browser app)
-- Scoring is done by Claude Code in-session rather than via direct Anthropic API calls
+- Reimplemented in Python (the original is a standalone browser app)
+- Scoring is done by Claude Code in-session rather than via direct API calls
 - Added a guided setup wizard, score caching, field-specific profile templates, and CLI tools
 
 ## License
 
-This project is released under the [MIT License](LICENSE). Per the CC BY 4.0 terms of the original work, credit is given to Elizabeth A. Barnes and the [LitMonitor Earth](https://github.com/eabarnes1010/litmonitor) project above.
+Released under the [MIT License](LICENSE). Credit is given to Elizabeth A. Barnes and [LitMonitor Earth](https://github.com/eabarnes1010/litmonitor) per the CC BY 4.0 terms of the original work.
