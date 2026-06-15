@@ -1,0 +1,53 @@
+# Profile template: Oceanography
+# Copy to profile.yaml and customize.
+
+name: YOUR_NAME_HERE
+email: YOUR_EMAIL@example.com
+days_back: 14
+
+research_context: >
+  I am an oceanographer studying [your specific focus, e.g. ocean circulation,
+  sea level rise, marine biogeochemistry, ocean-atmosphere interactions].
+
+prioritize: >
+  Ocean circulation and thermohaline dynamics.
+  Sea level rise and coastal flooding.
+  Ocean heat content and marine heatwaves.
+  Ocean-atmosphere coupling and climate variability.
+  Marine biogeochemistry and carbon cycle.
+  Arctic and Antarctic sea ice.
+  Deep ocean and abyssal dynamics.
+
+transferable_methods: >
+  Machine learning for ocean state estimation and prediction.
+  Data assimilation and ensemble methods.
+  High-resolution ocean modeling.
+  Satellite remote sensing of ocean surface.
+  Convolutional neural networks for spatial data.
+  Physics-informed neural networks (PINNs).
+
+downgrade: >
+  Pure atmospheric dynamics with no oceanic coupling.
+  Terrestrial hydrology with no coastal connection.
+  Paleoclimate (pre-instrumental era only).
+  Urban meteorology.
+
+priority_authors: >
+  # Add names as: Last, F.
+
+journals:
+  - "Journal of Physical Oceanography     | S203395042"
+  - "Journal of Geophysical Research - Oceans | S2764445190"
+  - "Ocean Modelling                      | S179372884"
+  - "Geophysical Research Letters         | S137773608"
+  - "Nature Climate Change                | S2737800780"
+  - "Climate Dynamics                     | S204528777"
+  - "Progress in Oceanography             | S110635745"
+  - "Journal of Climate                   | S186957035"
+  - "Deep Sea Research                    | S200270948"
+  - "Environmental Research Letters       | S180482871"
+
+arxiv_categories:
+  - physics.ao-ph
+  - physics.flu-dyn
+  - cs.LG

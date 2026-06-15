@@ -1,0 +1,49 @@
+# LitMonitor Claude — Research Profile
+# Copy this file to profile.yaml and fill in your details.
+# Alternatively, open this project in Claude Code and type "setup" — Claude will ask you questions.
+#
+# profile.yaml is gitignored (personal to each user).
+
+# ── Basic settings ────────────────────────────────────────────────────────────
+
+name: YOUR_NAME_HERE
+email: YOUR_EMAIL@example.com    # used in OpenAlex polite-pool headers (no account needed)
+days_back: 14                    # how many calendar days back to fetch
+
+# ── Research profile ──────────────────────────────────────────────────────────
+# Claude uses these sections to score papers 1–10.
+
+research_context: >
+  I am a [role] studying [brief research description].
+
+prioritize: >
+  [Topic that earns score 8–10]
+  [Another high-priority topic]
+  [Add as many lines as needed]
+
+transferable_methods: >
+  [Method from another field you'd want to apply — earns score 8–10]
+  [Another transferable method]
+
+downgrade: >
+  [Topic to suppress — earns score 1–4]
+  [Another topic to deprioritize]
+
+priority_authors: >
+  # Authors listed here always score 8–10 regardless of topic.
+  # Format: Last, F.   (last name + first initial)
+  # Example:
+  # Barnes, E.
+  # Smith, J.
+
+# ── Sources ───────────────────────────────────────────────────────────────────
+# Find OpenAlex source IDs at: https://api.openalex.org/sources?search=journal+name
+# Format: "Display Name | S<ID>"  or  "Display Name | ISSN:<ISSN>"
+
+journals:
+  - "Geophysical Research Letters        | S137773608"
+  - "Journal of Climate                  | S186957035"
+
+arxiv_categories:
+  - physics.ao-ph
+  - cs.LG

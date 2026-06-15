@@ -1,0 +1,53 @@
+# Profile template: ML / AI applied to climate & weather
+# Copy to profile.yaml and customize.
+
+name: YOUR_NAME_HERE
+email: YOUR_EMAIL@example.com
+days_back: 14
+
+research_context: >
+  I develop and apply machine learning methods for climate and weather applications,
+  focusing on [your specific angle, e.g. foundation models for weather, interpretable
+  AI, uncertainty quantification, emulation of physical models].
+
+prioritize: >
+  Neural weather and climate prediction (GraphCast, Pangu, FourCastNet, etc.).
+  Foundation models and large language models for earth sciences.
+  Physics-informed machine learning and hybrid modeling.
+  Uncertainty quantification and probabilistic ML for geosciences.
+  Interpretability and explainability of climate ML models.
+  Data-driven climate emulators and surrogate models.
+  Generative models (diffusion, normalizing flows) for geophysical data.
+  Downscaling and super-resolution for climate variables.
+
+transferable_methods: >
+  Transformer architectures and attention for spatiotemporal data.
+  Self-supervised and contrastive learning for scientific data.
+  Conformal prediction and distribution-free uncertainty.
+  Neural operators (FNO, DeepONet) for PDEs.
+  Active learning and experimental design.
+  Multi-task and transfer learning across climate domains.
+
+downgrade: >
+  Traditional NWP without ML components.
+  Observational-only studies with no modeling angle.
+  Social science and policy with minimal technical content.
+  Hardware and infrastructure papers unrelated to ML methods.
+
+priority_authors: >
+  # Add names as: Last, F.
+
+journals:
+  - "Artificial Intelligence Earth Sci    | ISSN:2993-0618"
+  - "Geophysical Research Letters         | S137773608"
+  - "Journal of Advances in Modeling ES   | S4363542"
+  - "Nature Climate Change                | S2737800780"
+  - "Environmental Data Science          | ISSN:2634-4602"
+  - "Journal of Climate                   | S186957035"
+  - "Monthly Weather Review               | S203292687"
+
+arxiv_categories:
+  - cs.LG
+  - stat.ML
+  - physics.ao-ph
+  - cs.AI

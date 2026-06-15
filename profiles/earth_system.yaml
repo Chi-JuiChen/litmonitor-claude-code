@@ -1,0 +1,54 @@
+# Profile template: Earth System Science (broad)
+# Copy to profile.yaml and customize.
+
+name: YOUR_NAME_HERE
+email: YOUR_EMAIL@example.com
+days_back: 14
+
+research_context: >
+  I am an earth system scientist studying [your specific focus, e.g. land-atmosphere
+  interactions, the global carbon cycle, tipping points, coupled climate feedbacks].
+
+prioritize: >
+  Earth system model development and evaluation.
+  Carbon cycle feedbacks and climate sensitivity.
+  Land surface processes and land-atmosphere coupling.
+  Tipping elements and abrupt climate change.
+  Coupled climate model projections.
+  Global hydrological cycle and water resources.
+  Ecosystem responses to climate change.
+
+transferable_methods: >
+  Machine learning for earth system emulation and surrogate modeling.
+  Causal inference and attribution methods.
+  Dimensionality reduction (EOF, PCA, autoencoders).
+  Bayesian methods and uncertainty quantification.
+  Graph neural networks for earth system interactions.
+
+downgrade: >
+  Narrow atmospheric dynamics with no broader earth system coupling.
+  Local urban case studies.
+  Pure paleoclimate without modern relevance.
+  Social science and economics without climate science angle.
+
+priority_authors: >
+  # Add names as: Last, F.
+
+journals:
+  - "Nature Climate Change                | S2737800780"
+  - "Nature Geoscience                   | S163697185"
+  - "Geophysical Research Letters         | S137773608"
+  - "Journal of Climate                   | S186957035"
+  - "Earth System Dynamics               | S4306371960"
+  - "Global Biogeochemical Cycles        | S204270777"
+  - "Journal of Advances in Modeling ES   | S4363542"
+  - "Environmental Research Letters       | S180482871"
+  - "Climate Dynamics                     | S204528777"
+  - "Global Change Biology               | S203099834"
+  - "Artificial Intelligence Earth Sci    | ISSN:2993-0618"
+
+arxiv_categories:
+  - physics.ao-ph
+  - physics.geo-ph
+  - cs.LG
+  - stat.ML

@@ -1,0 +1,57 @@
+# Profile template: Atmospheric Science
+# Copy to profile.yaml and customize. Open in Claude Code and type "setup" for guided setup.
+
+name: YOUR_NAME_HERE
+email: YOUR_EMAIL@example.com
+days_back: 14
+
+research_context: >
+  I am an atmospheric scientist studying [your specific focus, e.g. precipitation extremes,
+  subseasonal-to-seasonal prediction, climate variability].
+
+prioritize: >
+  Machine learning and AI for weather prediction and climate analysis.
+  Subseasonal-to-seasonal (S2S) prediction.
+  Precipitation extremes, floods, and droughts.
+  Probabilistic and ensemble forecasting.
+  Climate model evaluation and bias correction.
+  Atmospheric teleconnections and large-scale dynamics.
+  Extreme weather attribution and future projections.
+
+transferable_methods: >
+  Convolutional neural networks (CNNs) for spatial and spatiotemporal data.
+  Diffusion models and generative AI for geophysical fields.
+  Conformal prediction and uncertainty quantification.
+  Transformer architectures and attention mechanisms.
+  Normalizing flows and probabilistic generative models.
+  Transfer learning and domain adaptation.
+  Graph neural networks for irregular grids.
+
+downgrade: >
+  Paleoclimate reconstruction (pre-instrumental era only).
+  Pure oceanography with no atmospheric coupling.
+  Urban heat islands as primary topic.
+  Pure economics or social science with no climate angle.
+  Stratospheric chemistry unrelated to surface climate.
+
+priority_authors: >
+  # Add names as: Last, F.
+
+journals:
+  - "Geophysical Research Letters         | S137773608"
+  - "Journal of Climate                   | S186957035"
+  - "JGR - Atmospheres                    | S2764445201"
+  - "Nature Climate Change                | S2737800780"
+  - "Monthly Weather Review               | S203292687"
+  - "Journal of Advances in Modeling ES   | S4363542"
+  - "Bulletin of the AMS                  | S2736679647"
+  - "Climate Dynamics                     | S204528777"
+  - "Weather and Forecasting              | S203447697"
+  - "npj Climate and Atmospheric Science  | S4306402350"
+  - "Artificial Intelligence Earth Sci    | ISSN:2993-0618"
+  - "Environmental Research Letters       | S180482871"
+
+arxiv_categories:
+  - physics.ao-ph
+  - cs.LG
+  - stat.ML

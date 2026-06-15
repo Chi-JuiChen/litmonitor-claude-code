@@ -1,0 +1,20 @@
+# Personal config — each user has their own
+profile.yaml
+
+# Auto-generated output files
+papers_raw.json
+papers_scored.json
+score_cache.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
