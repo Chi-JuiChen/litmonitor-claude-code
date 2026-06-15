@@ -1,8 +1,8 @@
-# LitMonitor Claude
+# LitMonitor with Claude Code
 
-Stay current with academic literature using Claude Code as your AI reviewer — no extra API fees.
+Stay current with academic literature using Claude Code as your AI-powered reviewer. **Requires a Claude Code subscription** — but if you already have one, paper scoring is included at no additional cost.
 
-LitMonitor Claude fetches recent papers from academic journals and arXiv, then uses your Claude Code session to score each paper 1–10 based on your research interests. Because scoring happens *inside* Claude Code, it costs nothing beyond your existing subscription.
+LitMonitor with Claude Code fetches recent papers from academic journals and arXiv, then uses your active Claude Code session to score each paper 1–10 based on your research interests. Scoring happens *inside* Claude Code, so there are no separate API calls and no extra charges beyond your existing Claude subscription.
 
 > Inspired by [LitMonitor Earth](https://github.com/eabarnes1010/litmonitor) by Elizabeth A. Barnes (CC BY 4.0).
 
